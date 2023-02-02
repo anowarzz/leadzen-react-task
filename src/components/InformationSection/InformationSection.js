@@ -26,24 +26,26 @@ setClients(response.data)
     return (
         <div>
             {
-                clients && clients?.map(client => <div className= 'flex justify-between bg-white h-24 px-4 w-11/12 rounded-lg mx-auto mb-4 items-center'>
+                clients && clients?.map(client => <div className= 'flex gap-4 flex-col md:flex-row  bg-white p-4 w-11/12 rounded-lg mx-auto mb-4 items-center' key={client.id}>
                     
-                    <div>
-                        <h2>Name</h2>
-                        <p>Imran Dhala</p>
+                    <div className='w-full mx-auto'>
+                        <h2 className="font-bold mb-2 text-lg">Company</h2>
+                        <p> {client?.company?.name} </p>
                     </div>
-                    <div>
-                <h2>Contact</h2>
-                <p>Delhi</p>
+                    <div className='w-full'>
+                <h2 className="font-bold mb-2 text-lg">Contact</h2>
+                <p>{client?.name}</p>
                     </div>
-                    <div>
-                <h2>City</h2>
+                    <div className='w-full'>
+                <h2 className="font-bold mb-2 text-lg">Street</h2>
+                <p>{client?.address?.street}</p>
                     </div>
-                    <div>
-                <h2>State</h2>
+                    <div className='w-full items-center'>
+                <h2 className="font-bold mb-2 text-lg">City</h2>
+                <p>{client?.address?.city}</p>
                     </div>
-                    <div>
-                    <button className='btn btn bg-red-400'>Details</button>
+                    <div className=''>
+                    <button className='btn btn bg-red-400 py-2 px-3 rounded'>Details</button>
                     </div>
                     
                      </div>
