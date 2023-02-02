@@ -1,58 +1,47 @@
-import axios from 'axios';
-import React, { useDebugValue, useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import DetailInformationModal from "../DetailInformationModal/DetailInformationModal";
+import ShortInformationCard from "../ShortInformationCard/ShortInformationCard";
 
 const InformationSection = () => {
+  // state to store client details
+  const [clients, setClients] = useState(null);
+
+// state to show and hide modal and details information
+ const [detailInfo, setDetailInfo] = useState(null)
 
 
-const [clients, setClients] = useState(null)
-
-
-// Loading data from database through api
-useEffect( () => {
-axios.get("https://jsonplaceholder.typicode.com/users")
-.then(response => {
-console.log(response);
-setClients(response.data)
-})
-.catch((err) => {
-    console.log(err);
-    
-})
-
-}, [])
+  // Loading data from database through api
+  useEffect(() => {
+    axios
+      .get("https://jsonplaceholder.typicode.com/users")
+      .then((response) => {
+        console.log(response);
+        setClients(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
 
 
-    return (
-        <div>
-            {
-                clients && clients?.map(client => <div className= 'flex gap-4 flex-col md:flex-row  bg-white p-4 w-11/12 rounded-lg mx-auto mb-4 items-center' key={client.id}>
-                    
-                    <div className='w-full text-center'>
-                        {/* <h2 className="font-bold md:mb-2 text-lg">Company</h2> */}
-                        <p className='font-semibold'> {client?.company?.name} </p>
-                    </div>
-                    <div className='w-full text-center'>
-                <h2 className="font-semibold md:mb-2 text-lg">Contact</h2>
-                <p>{client?.name}</p>
-                    </div>
-                    <div className='w-full text-center'>
-                <h2 className="font-semibold  md:mb-2 text-lg">Street</h2>
-                <p>{client?.address?.street}</p>
-                    </div>
-                    <div className='w-full text-center'>
-                <h2 className="font-semibold md:mb-2 text-lg">City</h2>
-                <p>{client?.address?.city}</p>
-                    </div>
-                    <div className=''>
-                    <button className='btn btn bg-red-400 py-2 px-3 rounded'>Details</button>
-                    </div>
-                    
-                     </div>
-                     )
-            }
-        </div>
-    );
+
+
+
+
+  return (
+    <div>
+      {clients &&
+        clients?.map((client) => (
+          <ShortInformationCard key={client.id} client={client} detailInfo = {detailInfo} setDetailInfo = {setDetailInfo}/>
+        ))}
+
+   {
+      detailInfo && <DetailInformationModal />
+   }
+    </div>
+  );
 };
 
 export default InformationSection;
