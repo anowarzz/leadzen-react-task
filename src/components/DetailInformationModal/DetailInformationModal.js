@@ -3,10 +3,7 @@ import React from 'react';
 const DetailInformationModal = ({detailInfo}) => {
     return (
         <div>
-            {/* The button to open modal */}
 
-
-{/* Put this part before </body> tag */}
 <input type="checkbox" id="detailModal" className="modal-toggle" />
 <div className="modal">
   <div className="modal-box w-11/12 max-w-5xl">
