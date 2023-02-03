@@ -33,7 +33,7 @@ const DetailInformationModal = ({detailInfo}) => {
 <p className='mb-2'>{detailInfo?.address?.street}</p>
 <h5 className='font-bold md:text-lg'>Website</h5>
 <p className='mb-2'>{detailInfo?.website}</p>
-<h5 className='font-bold md:text-lg'>Email</h5>
+<h5 className='font-bold md:text-lg'>User Name</h5>
 <p className='mb-2'>{detailInfo?.username}</p>
 <h5 className='font-bold md:text-lg'>City</h5>
 <p className='mb-1'>{detailInfo?.address?.city}</p>
